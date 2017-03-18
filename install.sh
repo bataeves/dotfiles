@@ -25,7 +25,6 @@ jnettop
 lame
 legit
 p7zip
-pgcli
 pngcrush
 recode
 rtmpdump
@@ -61,7 +60,7 @@ git submodule update --remote --merge
 
 # Search local dotfiles
 if $IS_MACOS; then
-    DOT_FILES=$(find ./dotfiles-common ./dotfiles-macos -maxdepth 1 \
+    DOT_FILES=$(find ./dotfiles-common -maxdepth 1 \
         -not -path "./dotfiles-common" \
         -not -path "./dotfiles-macos" \
         -not -name "\.DS_Store" -and \
@@ -96,9 +95,12 @@ do
 done
 
 # Install vim plugins
-curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > /tmp/installer.sh
-mkdir -p ~/.vim/dein/
-sh /tmp/installer.sh ~/.vim/dein/
+
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+# curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > /tmp/installer.sh
+# mkdir -p ~/.vim/dein/
+# sh /tmp/installer.sh ~/.vim/dein/
 
 # Install all software first.
 if $IS_MACOS; then
@@ -145,7 +147,11 @@ else
     fc-cache -f -v
 fi
 
-vim -c ':call dein#update()'
+mkdir -p ~/.vim/colors/
+cp ~/.vim/dein/repos/github.com/dracula/vim/colors/dracula.vim ~/.vim/colors/
+cp ~/.vim/dein/repos/github.com/altercation/vim-colors-solarized/colors/solarized.vim ~/.vim/colors/
+mkdir -p ~/.vim_tmp/
+vim -c ':call dein#install()'
 
 # Configure everything.
 # if $IS_MACOS; then

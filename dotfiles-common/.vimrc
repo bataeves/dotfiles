@@ -1,65 +1,47 @@
 " Drop total compatibility with ancient vi.
 set nocompatible
+filetype off
 
-set runtimepath+=/Users/evgeny/.vim/dein/repos/github.com/Shougo/dein.vim
+set rtp+=~/.vim/bundle/Vundle.vim
 
-if dein#load_state('~/.vim/dein/')
-  call dein#begin('~/.vim/dein/')
+call vundle#begin()
 
-  call dein#add('Shougo/neocomplete.vim')
+Plugin 'VundleVim/Vundle.vim'
 
-  " Package manager
-  call dein#add('Shougo/dein.vim')
+" Color scheme
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'dracula/vim'
 
-  " Color scheme
-  call dein#add('altercation/vim-colors-solarized')
-  call dein#add('dracula/vim')
+" GUI
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'Yggdroot/indentLine'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'alfredodeza/coveragepy.vim'
+Plugin 'ervandew/supertab'
 
-  " GUI
-  call dein#add('vim-airline/vim-airline')
-  call dein#add('vim-airline/vim-airline-themes')
-  call dein#add('Yggdroot/indentLine')
-  call dein#add('airblade/vim-gitgutter')
-  call dein#add('alfredodeza/coveragepy.vim')
-  call dein#add('ervandew/supertab')
+" Syntax
+Plugin 'sheerun/vim-polyglot'
+Plugin 'digitaltoad/vim-jade'
+Plugin 'hail2u/vim-css3-syntax'
+Plugin 'vim-scripts/po.vim--gray'
 
-  " Syntax
-  call dein#add('sheerun/vim-polyglot')
-  call dein#add('digitaltoad/vim-jade')
-  call dein#add('hail2u/vim-css3-syntax')
-  call dein#add('vim-scripts/po.vim--gray')
-  call dein#add('vim-scripts/plist.vim', {'on_ft': 'plist'})
-  call dein#add('hunner/vim-plist', {'on_ft': 'plist'})
+" Editing
+Plugin 'Chiel92/vim-autoformat'
+Plugin 'Shougo/deoplete.nvim'
+Plugin 'Raimondi/delimitMate'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'haya14busa/incsearch.vim'
+Plugin 'junegunn/vim-easy-align'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
+Plugin 'fisadev/vim-isort'
+Plugin 'klen/python-mode'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'tpope/vim-sensible'
 
-  " Linters
-  call dein#add('w0rp/ale')
-
-  " Edition
-  call dein#add('Chiel92/vim-autoformat')
-  call dein#add('Shougo/deoplete.nvim')
-  call dein#add('Raimondi/delimitMate')
-  call dein#add('terryma/vim-multiple-cursors')
-  call dein#add('haya14busa/incsearch.vim')
-  call dein#add('junegunn/vim-easy-align')
-  call dein#add('tpope/vim-surround')
-  call dein#add('tpope/vim-repeat')
-  call dein#add('fisadev/vim-isort')
-  call dein#add('klen/python-mode')
-  call dein#add('davidhalter/jedi-vim')
-
-  call dein#add('tpope/vim-sensible')
-
-  call dein#end()
-  call dein#save_state()
-endif
-
-filetype plugin indent on
-syntax enable
-
-" If you want to install not installed plugins on startup.
-if dein#check_install()
-  call dein#install()
-endif
+call vundle#end()            " required
+filetype plugin indent on    " required
 
 scriptencoding utf-8
 set encoding=utf-8              " setup the encoding to UTF-8
@@ -127,7 +109,7 @@ set undoreload=1000
 " colorscheme solarized
 
 syntax on
-color dracula
+colorscheme dracula
 
 
 " Font
@@ -145,10 +127,10 @@ endfunction
 " Backups
 set backup
 set noswapfile
-set backupdir=~/.config/vim/tmp/backup/
-set undodir=~/.config/vim/tmp/undo/
-set directory=~/.config/vim/tmp/swap/
-set viminfo+=n~/.config/vim/tmp/viminfo
+set backupdir=~/.vim_tmp/backup/
+set undodir=~/.vim_tmp/undo/
+set directory=~/.vim_tmp/swap/
+set viminfo+=n~/.vim_tmp/viminfo/
 
 " Make this dirs if no exists previously
 silent! call MakeDirIfNoExists(&undodir)
@@ -167,7 +149,7 @@ autocmd BufWritePre,FileWritePost * setlocal nobomb
 
 " Airline
 set noshowmode
-let g:airline_theme = 'solarized'
+let g:airline_theme = 'dracula'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#hunks#non_zero_only = 1
 let g:airline#extensions#tabline#enabled = 2
@@ -178,15 +160,6 @@ let g:airline#extensions#tabline#buffer_min_count = 1
 " indentLine
 let g:indentLine_char = '┊'
 let g:indentLine_color_term = 239
-
-
-" ALE config for linting.
-let g:ale_sign_error = '✘'
-let g:ale_sign_warning = '⚠'
-let g:ale_lint_on_save = 1
-let g:ale_lint_on_text_changed = 1
-let g:ale_sign_column_always = 1
-let g:ale_echo_msg_format = '[%linter%] %s'
 
 
 " Git gutter
@@ -243,6 +216,3 @@ let g:pymode_run = 0
 
 " Disable choose first function/method at autocomplete
 let g:jedi#popup_select_first = 0
-
-" Plist
-au BufRead,BufNewFile *.plist set filetype=plist

@@ -325,6 +325,7 @@ hardstatus alwayslastline "%{= kw} %-Lw%{=b Kw} %n%f %t %{-}%+Lw %=%{= dd}"
  bind c screen 1 # window numbering starts at 1 not 0
  bind 0 select 10
 
+
 #
 # BUUG - Berlin Unix User Group - read some news about Unix
 #  bind B screen -t 'buug' 4 links www.buug.de
