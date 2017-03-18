@@ -72,7 +72,7 @@ source ~/.bash-git-prompt/gitprompt.sh
 export SUDO_PS1='\[\e[31m\]\u\[\e[37m\]:\[\e[33m\]\w\[\e[31m\]\$\[\033[00m\] '
 
 # Make Neovim the default editor
-export EDITOR="nvim"
+export EDITOR="vim"
 
 # Set default ls color schemes (source: https://github.com/seebi/dircolors-solarized/issues/10 ).
 # macOS/Linux color translations generated with http://geoff.greer.fm/lscolors/
@@ -86,6 +86,8 @@ fi
 # Activate global dir colors if found.
 if $IS_MACOS; then
     alias dircolors='gdircolors'
+    alias show_hidden="defaults write com.apple.Finder AppleShowAllFiles YES && killall Finder"
+    alias hide_hidden="defaults write com.apple.Finder AppleShowAllFiles NO && killall Finder"
 fi
 if [ -f $HOME/.dircolors ]
 then
@@ -107,8 +109,8 @@ alias ccat='pygmentize -g'
 
 alias top="htop"
 alias gr='grep -RIi --no-messages'
-alias vi='nvim'
-alias v="nvim"
+alias vi='vim'
+alias v="vim"
 alias g="git"
 alias h="history"
 alias q='exit'
@@ -168,6 +170,8 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
+
+alias servethis="python -c 'import SimpleHTTPServer; SimpleHTTPServer.test()'"
 
 export LESS="-eRX"
 export LESSOPEN='| pygmentize -g %s'

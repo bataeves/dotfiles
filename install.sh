@@ -96,6 +96,11 @@ do
     fi
 done
 
+# Install vim plugins
+curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > /tmp/installer.sh
+mkdir -p ~/.vim/dein/
+sh /tmp/installer.sh ~/.vim/dein/
+
 # Install all software first.
 if $IS_MACOS; then
     source ./scripts/macos-install.sh
@@ -107,6 +112,7 @@ fi
 # Install & upgrade all global python modules
 PYTHON_PACKAGES="
 pip
+readline
 bumpversion
 gmvault
 gsutil
@@ -141,13 +147,14 @@ else
     fc-cache -f -v
 fi
 
-# Force Neovim plugin upgrades
-nvim -c ':call dein#update()'
+vim -c ':call dein#update()'
 
 # Configure everything.
-if $IS_MACOS; then
-    source ./scripts/macos-config.sh
-fi
+# if $IS_MACOS; then
+    # source ./scripts/macos-config.sh
+# fi
+
+cp ~/.ssh.dotfiles.bak/* ~/.ssh/
 
 # Reload Bash with new configuration
 source ~/.bash_profile

@@ -154,13 +154,17 @@ docblockr
 file-icons
 hydrogen
 linter-flake8
+linter
+linter-ui-default
+busy-signal
+intentions
 minimap
 python-isort
 python-tools
 tag
 trailing-spaces
-virtualenv
-virtualenvwrapper
+language-gitignore
+language-awk
 "
 for PACKAGE in $ATOM_PACKAGES
 do
