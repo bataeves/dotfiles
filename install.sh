@@ -5,36 +5,30 @@ set -x
 COMMON_PACKAGES="
 apg
 bash
-bash-completion
+bash-completion2
 colordiff
 colortail
 coreutils
-faac
 fdupes
 findutils
-flac
 fontforge
-git
 git-extras
 gpg
 graphviz
 grc
 hfsutils
 htop
-id3v2
+atop
 imagemagick
 jq
 jnettop
 lame
 legit
-mercurial
 neovim
-optipng
 p7zip
 pgcli
 pngcrush
 recode
-rename
 rtmpdump
 shellcheck
 shntool
@@ -42,23 +36,9 @@ testdisk
 tree
 unrar
 wget
-wireshark
-x264
-youtube-dl
 "
 
-BIN_PACKAGES="
-audacity
-firefox
-gimp
-handbrake
-hugin
-inkscape
-prey
-sqlitebrowser
-subsurface
-virtualbox
-"
+BIN_PACKAGES=""
 
 # Detect platform.
 if [ "$(uname -s)" == "Darwin" ]; then
@@ -67,28 +47,14 @@ else
     IS_MACOS=false
 fi
 
-# Detect if Linux system is either a Plasma/KDE desktop or headless server.
-IS_DESKTOP=true
-if ! $IS_MACOS; then
-    # Good candidates of installed packages hinting at a desktop are:
-    # kde-baseapps, kde-runtime, plasma-desktop, plasma-framework,
-    # plasma-workspace, xorg and xserver-common.
-    # Among those, I choosed plasma-desktop as it is more generic than
-    # Kubuntu-specifi packages. And removing the plasma-desktop package is
-    # going to make your system unusable.
-    apt list --installed --quiet | grep --quiet "^plasma-desktop"
-    if [[ $? -ne 0 ]]; then
-        IS_DESKTOP=false
-    fi
+IS_DESKTOP=$IS_MACOS
+
+if $IS_MACOS; then
+    # Ask for the administrator password upfront.
+    sudo -v
+    # Keep-alive: update existing `sudo` time stamp until script has finished.
+    while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 fi
-
-# Ask for the administrator password upfront.
-sudo -v
-
-# Keep-alive: update existing `sudo` time stamp until script has finished.
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
-
-# TODO: install git here.
 
 # Force initialization and update of local submodules.
 git submodule init
@@ -134,38 +100,28 @@ done
 if $IS_MACOS; then
     source ./scripts/macos-install.sh
     source ./scripts/macos-install-refind.sh
-else
-    source ./scripts/kubuntu-install.sh
+# else
+#     source ./scripts/kubuntu-install.sh
 fi
 
 # Install & upgrade all global python modules
 PYTHON_PACKAGES="
 pip
 bumpversion
-coverage
-flake8
 gmvault
 gsutil
 httpie
+ipython
 jupyter
-meta-package-manager
 neovim
-nose
-nose-progressive
-pycodestyle
-pydocstyle
 pygments
-pylint
 setuptools
-tox
 virtualenv
 virtualenvwrapper
-wheel
-yapf
 "
 for p in $PYTHON_PACKAGES
 do
-    pip install --upgrade "$p"
+    pip install --user --upgrade "$p"
 done
 
 # Patch terminal font for Vim's Airline plugin
@@ -182,7 +138,7 @@ else
     mkdir -p ~/.fonts/
     mv ./Source\ Code\ Pro.otf ~/.fonts/
     # Refresh font cache
-    sudo fc-cache -f -v
+    fc-cache -f -v
 fi
 
 # Force Neovim plugin upgrades
@@ -191,8 +147,6 @@ nvim -c ':call dein#update()'
 # Configure everything.
 if $IS_MACOS; then
     source ./scripts/macos-config.sh
-else
-    source ./scripts/kubuntu-config.sh
 fi
 
 # Reload Bash with new configuration
