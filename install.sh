@@ -24,7 +24,6 @@ jq
 jnettop
 lame
 legit
-neovim
 p7zip
 pgcli
 pngcrush
@@ -119,7 +118,6 @@ gsutil
 httpie
 ipython
 jupyter
-neovim
 pygments
 setuptools
 virtualenv
