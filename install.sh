@@ -119,7 +119,6 @@ gmvault
 gsutil
 httpie
 ipython
-jupyter
 pygments
 setuptools
 virtualenv

@@ -65,7 +65,7 @@ brew cask install xquartz
 brew install python
 brew link --overwrite python
 # Install python 3 too.
-brew install python3
+# brew install python3
 
 # Install common packages
 brew install apple-gcc42

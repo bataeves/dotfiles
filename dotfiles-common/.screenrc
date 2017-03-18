@@ -23,7 +23,6 @@ setenv SSH_AUTH_SOCK "/tmp/ssh-agent-$USER"
 # ===============================================================
 # Uncomment one/some following lines to automatically let
 # SCREEN start some programs in the given window numbers:
-screen -t Shell       0 bash
 screen -t Shell       1 bash
 screen -t Shell       2 bash
 screen -t Shell       3 bash
@@ -32,8 +31,9 @@ screen -t Shell       5 bash
 screen -t Shell       6 bash
 screen -t Shell       7 bash
 screen -t Shell       8 bash
-screen -t Shell       9 mc
-screen -t Ipython     0 ipython
+screen -t Shell       9 bash
+screen -t Ipython     10 ipython
+select 1
 
 #
 # ===============================================================
