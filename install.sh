@@ -125,7 +125,7 @@ virtualenvwrapper
 "
 for p in $PYTHON_PACKAGES
 do
-    pip install --user "$p"
+    pip2.7 install --user "$p"
 done
 
 # Patch terminal font for Vim's Airline plugin
