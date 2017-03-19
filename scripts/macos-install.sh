@@ -73,6 +73,7 @@ for PACKAGE in $COMMON_PACKAGES
 do
    brew install "$PACKAGE"
 done
+brew install vim
 brew install ack
 brew install cassandra
 brew install curl

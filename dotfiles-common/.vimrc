@@ -39,6 +39,7 @@ Plugin 'fisadev/vim-isort'
 Plugin 'klen/python-mode'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'tpope/vim-sensible'
+Plugin 'kana/vim-fakeclip'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -127,10 +128,10 @@ endfunction
 " Backups
 set backup
 set noswapfile
-set backupdir=~/.vim_tmp/backup/
-set undodir=~/.vim_tmp/undo/
-set directory=~/.vim_tmp/swap/
-set viminfo+=n~/.vim_tmp/viminfo/
+set backupdir=~/.vim_tmp/backup
+set undodir=~/.vim_tmp/undo
+set directory=~/.vim_tmp/swap
+set viminfo+=n~/.vim_tmp/viminfo
 
 " Make this dirs if no exists previously
 silent! call MakeDirIfNoExists(&undodir)

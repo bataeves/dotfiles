@@ -24,6 +24,7 @@ fi
 [ -f /etc/bash_completion ] && source /etc/bash_completion
 if $IS_MACOS; then
     [ -f "$(brew --prefix)/etc/bash_completion" ] && source "$(brew --prefix)/etc/bash_completion"
+    test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 fi
 
 # Setting history length
@@ -77,6 +78,7 @@ export EDITOR="vim"
 # Set default ls color schemes (source: https://github.com/seebi/dircolors-solarized/issues/10 ).
 # macOS/Linux color translations generated with http://geoff.greer.fm/lscolors/
 if $IS_MACOS; then
+    export TERM=xterm-256color
     export CLICOLOR=1
     export LSCOLORS="gxfxbEaEBxxEhEhBaDaCaD"
 else
@@ -269,3 +271,20 @@ if $IS_MACOS; then
     # fi
 
 fi
+
+# User specific environment and startup programs
+PATH=$PATH:$HOME/bin
+export PATH
+
+# pyspark
+export PYSPARK_SUBMIT_ARGS="pyspark-shell"
+if $IS_MACOS; then
+  export SPARK_HOME=/usr/local/Cellar/apache-spark/2.1.0/libexec/
+else
+  export SPARK_HOME=/usr/lib/spark
+  export HADOOP_USER_NAME="$USER"
+  export PYSPARK_PYTHON=/usr/bin/python2.7
+fi
+
+export PYTHONPATH=$SPARK_HOME/python:$SPARK_HOME/python/build:$PYTHONPATH
+export PYTHONPATH=$SPARK_HOME/python/lib/py4j-0.9-src.zip:$PYTHONPATH
