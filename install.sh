@@ -95,12 +95,10 @@ do
 done
 
 # Install vim plugins
-
+mkdir -p ~/.vim/bundle
+mkdir -p ~/.vim_tmp/
+mkdir -p ~/.vim/colors/
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-
-# curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > /tmp/installer.sh
-# mkdir -p ~/.vim/dein/
-# sh /tmp/installer.sh ~/.vim/dein/
 
 # Install all software first.
 if $IS_MACOS; then
@@ -118,6 +116,7 @@ bumpversion
 gmvault
 gsutil
 httpie
+glances
 ipython
 pygments
 setuptools
@@ -126,7 +125,7 @@ virtualenvwrapper
 "
 for p in $PYTHON_PACKAGES
 do
-    pip install --user --upgrade "$p"
+    pip install --user "$p"
 done
 
 # Patch terminal font for Vim's Airline plugin
@@ -146,11 +145,10 @@ else
     fc-cache -f -v
 fi
 
-mkdir -p ~/.vim/colors/
-cp ~/.vim/dein/repos/github.com/dracula/vim/colors/dracula.vim ~/.vim/colors/
-cp ~/.vim/dein/repos/github.com/altercation/vim-colors-solarized/colors/solarized.vim ~/.vim/colors/
-mkdir -p ~/.vim_tmp/
-vim -c ':call dein#install()'
+# cp ~/.vim/dein/repos/github.com/dracula/vim/colors/dracula.vim ~/.vim/colors/
+# cp ~/.vim/dein/repos/github.com/altercation/vim-colors-solarized/colors/solarized.vim ~/.vim/colors/
+
+vim +PluginInstall +qall
 
 # Configure everything.
 # if $IS_MACOS; then
