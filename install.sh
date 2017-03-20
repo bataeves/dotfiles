@@ -56,7 +56,7 @@ fi
 
 # Force initialization and update of local submodules.
 git submodule init
-git submodule update --remote --merge
+git submodule update --merge
 
 # Search local dotfiles
 if $IS_MACOS; then
