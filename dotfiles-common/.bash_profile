@@ -1,8 +1,3 @@
-# Force Python, then Homebrew binaries to take precedence on macOS default
-PYTHON_LOCAL_BIN="$(python -m site --user-base)/bin"
-GNU_CORE_UTILS_BIN="$(brew --prefix coreutils)/libexec/gnubin"
-export PATH="$PYTHON_LOCAL_BIN:$GNU_CORE_UTILS_BIN:/usr/local/bin:/usr/local/sbin:$PATH"
-
 # Prefer US English and use UTF-8
 export LANG="en_US"
 export LC_ALL="en_US.UTF-8"
@@ -23,6 +18,10 @@ fi
 # If possible, add tab completion for many more commands
 [ -f /etc/bash_completion ] && source /etc/bash_completion
 if $IS_MACOS; then
+    # Force Python, then Homebrew binaries to take precedence on macOS default
+    PYTHON_LOCAL_BIN="$(python -m site --user-base)/bin"
+    GNU_CORE_UTILS_BIN="$(brew --prefix coreutils)/libexec/gnubin"
+    export PATH="$PYTHON_LOCAL_BIN:$GNU_CORE_UTILS_BIN:/usr/local/bin:/usr/local/sbin:$PATH"
     [ -f "$(brew --prefix)/etc/bash_completion" ] && source "$(brew --prefix)/etc/bash_completion"
     test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 fi
@@ -128,34 +127,36 @@ function cls {
 alias c='cls'
 
 # Use GRC for additionnal colorization
-GRC=$(which grc)
-if [ -n GRC ]; then
-    alias colourify='$GRC -es --colour=auto'
-    alias as='colourify as'
-    #cvs
-    alias configure='colourify ./configure'
-    alias diff='colourify diff'
-    alias dig='colourify dig'
-    alias g++='colourify g++'
-    alias gas='colourify gas'
-    alias gcc='colourify gcc'
-    alias head='colourify head'
-    alias ifconfig='colourify ifconfig'
-    #irclog
-    alias ld='colourify ld'
-    #ldap
-    #log
-    alias ls='colourify ls'
-    alias make='colourify make'
-    alias mount='colourify mount'
-    #mtr
-    alias netstat='colourify netstat'
-    alias ping='colourify ping'
-    #proftpd
-    alias ps='colourify ps'
-    alias tail='colourify tail'
-    alias traceroute='colourify traceroute'
-    #wdiff
+if $IS_MACOS; then
+  GRC=$(which grc 2>/dev/null)
+  if [ -n GRC ]; then
+      alias colourify='$GRC -es --colour=auto'
+      alias as='colourify as'
+      #cvs
+      alias configure='colourify ./configure'
+      alias diff='colourify diff'
+      alias dig='colourify dig'
+      alias g++='colourify g++'
+      alias gas='colourify gas'
+      alias gcc='colourify gcc'
+      alias head='colourify head'
+      alias ifconfig='colourify ifconfig'
+      #irclog
+      alias ld='colourify ld'
+      #ldap
+      #log
+      alias ls='colourify ls'
+      alias make='colourify make'
+      alias mount='colourify mount'
+      #mtr
+      alias netstat='colourify netstat'
+      alias ping='colourify ping'
+      #proftpd
+      alias ps='colourify ps'
+      alias tail='colourify tail'
+      alias traceroute='colourify traceroute'
+      #wdiff
+  fi
 fi
 
 # Detect which `ls` flavor is in use
@@ -199,7 +200,7 @@ export PATH="$PATH:$HOME/.diff-so-fancy"
 export PYTHONDONTWRITEBYTECODE=true
 
 # Python shell auto-completion and history
-export PYTHONSTARTUP="$HOME/.python_startup.py"
+# export PYTHONSTARTUP="$HOME/.python_startup.py"
 
 # Display DeprecationWarning
 #export PYTHONWARNINGS=d
@@ -213,10 +214,10 @@ export VIRTUALENVWRAPPER_HOOK_DIR=$HOME/.virtualenv
 export VIRTUALENVWRAPPER_VIRTUALENV_ARGS="--python=$(which python)"
 
 # Load shell helpers
-source virtualenvwrapper.sh
-source ~/.autoenv/activate.sh
+# source virtualenvwrapper.sh
+# source ~/.autoenv/activate.sh
 
-eval "$(pip completion --bash)"
+eval "$(pip2.7 completion --bash)"
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh

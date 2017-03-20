@@ -105,7 +105,7 @@ if $IS_MACOS; then
     source ./scripts/macos-install.sh
     source ./scripts/macos-install-refind.sh
 # else
-#     source ./scripts/kubuntu-install.sh
+#     source ./scripts/centos-install.sh
 fi
 
 # Install & upgrade all global python modules
@@ -113,8 +113,6 @@ PYTHON_PACKAGES="
 pip
 readline
 bumpversion
-gmvault
-gsutil
 httpie
 glances
 ipython

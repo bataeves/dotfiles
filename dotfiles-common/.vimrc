@@ -27,7 +27,7 @@ Plugin 'hail2u/vim-css3-syntax'
 Plugin 'vim-scripts/po.vim--gray'
 
 " Editing
-Plugin 'Chiel92/vim-autoformat'
+" Plugin 'Chiel92/vim-autoformat'
 Plugin 'Shougo/deoplete.nvim'
 Plugin 'Raimondi/delimitMate'
 Plugin 'terryma/vim-multiple-cursors'
@@ -80,7 +80,7 @@ set foldmethod=indent          " automatically fold by indent level
 set nofoldenable               " ... but have folds open by default"
 set virtualedit=all
 set textwidth=79
-set colorcolumn=80
+" set colorcolumn=80
 " highlight tabs and trailing spaces
 " source: https://wincent.com/blog/making-vim-highlight-suspicious-characters
 set listchars=nbsp:¬,eol:¶,tab:→\ ,extends:»,precedes:«,trail:•
@@ -99,8 +99,8 @@ set ignorecase     " ignore case letters
 
 " History and permanent undo levels
 set history=1000
-set undofile
-set undoreload=1000
+" set undofile
+" set undoreload=1000
 
 
 " Color scheme.
@@ -129,12 +129,12 @@ endfunction
 set backup
 set noswapfile
 set backupdir=~/.vim_tmp/backup
-set undodir=~/.vim_tmp/undo
+" set undodir=~/.vim_tmp/undo
 set directory=~/.vim_tmp/swap
 set viminfo+=n~/.vim_tmp/viminfo
 
 " Make this dirs if no exists previously
-silent! call MakeDirIfNoExists(&undodir)
+" silent! call MakeDirIfNoExists(&undodir)
 silent! call MakeDirIfNoExists(&backupdir)
 silent! call MakeDirIfNoExists(&directory)
 

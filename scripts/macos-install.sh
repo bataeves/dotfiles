@@ -74,6 +74,7 @@ do
    brew install "$PACKAGE"
 done
 brew install vim
+brew link --force vim
 brew install ack
 brew install cassandra
 brew install curl

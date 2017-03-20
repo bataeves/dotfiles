@@ -7,8 +7,8 @@
     # See: https://www.git-tower.com/blog/make-git-rebase-safe-on-osx/
     trustctime = false
 [user]
-    name = Bataev Evgeny
-    email = bataev.evgeny@gmail.com
+    name = Батаев Евгений
+    email = e.bataev@corp.mail.ru
 [color]
     diff = auto
     status = auto
@@ -26,22 +26,22 @@
 # [commit]
     # Source: https://github.com/pstadler/keybase-gpg-github
     # gpgsign = true
-[pull]
-    # Source: https://stackoverflow.com/a/18756102/487610
-    rebase = preserve
-[push]
-    # Prevent accidental pushes to branches which you’re not ready to push yet.
-    # Source: http://mislav.uniqpath.com/2010/07/git-tips/
-    default = tracking
+# [pull]
+#     # Source: https://stackoverflow.com/a/18756102/487610
+#     rebase = preserve
+# [push]
+#     # Prevent accidental pushes to branches which you’re not ready to push yet.
+#     # Source: http://mislav.uniqpath.com/2010/07/git-tips/
+#     default = tracking
 [submodule]
     # Source: https://github.com/blog/2188-git-2-9-has-been-released/#faster-and-more-flexible-submodules
     fetchJobs = 2
 [merge]
     log = true
-[branch]
-    autosetuprebase = remote
-[rebase]
-    autostash = true
+# [branch]
+#     autosetuprebase = remote
+# [rebase]
+#     autostash = true
 [alias]
     br = branch
     ci = commit
