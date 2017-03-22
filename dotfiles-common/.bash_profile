@@ -294,3 +294,5 @@ alias htxt='snakebite text'
 alias hls='snakebite ls -h'
 alias hdu='snakebite du -h'
 alias hatxt='hadoop fs -text'
+
+alias pyspark2='SPARK_HOME=$HOME/spark-2.1.0-bin-hadoop2.6/ PYTHONPATH="$SPARK_HOME/python/:$SPARK_HOME/python/lib/py4j-0.10.4-src.zip:."'
