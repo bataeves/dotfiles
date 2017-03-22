@@ -41,10 +41,6 @@ brew tap caskroom/cask
 # Add services
 brew tap homebrew/services
 
-# Install Mac App Store CLI and upgrade all apps.
-brew install mas
-mas upgrade
-
 # Install Bash 4.
 # Note: don’t forget to add `/usr/local/bin/bash` to `/etc/shells` before
 # running `chsh`.
@@ -62,10 +58,10 @@ fi;
 brew cask install xquartz
 
 # Install a brand new Python
-brew install python
-brew link --overwrite python
+# brew install python
+# brew link --overwrite python
 # Install python 3 too.
-# brew install python3
+brew install python3
 
 # Install common packages
 brew install apple-gcc42
@@ -104,7 +100,7 @@ do
 done
 brew cask install gitup
 brew cask install java
-brew cask install keybase
+# brew cask install keybase
 # brew cask install libreoffice
 brew cask install spectacle
 brew cask install telegram-desktop
