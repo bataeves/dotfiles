@@ -289,3 +289,8 @@ fi
 
 export PYTHONPATH=$SPARK_HOME/python:$SPARK_HOME/python/build:$PYTHONPATH
 export PYTHONPATH=$SPARK_HOME/python/lib/py4j-0.9-src.zip:$PYTHONPATH
+
+alias htxt='snakebite text'
+alias hls='snakebite ls -h'
+alias hdu='snakebite du -h'
+alias hatxt='hadoop fs -text'

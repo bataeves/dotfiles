@@ -159,6 +159,7 @@ tag
 trailing-spaces
 language-gitignore
 language-awk
+git-plus
 "
 for PACKAGE in $ATOM_PACKAGES
 do
