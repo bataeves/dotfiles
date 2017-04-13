@@ -17,6 +17,8 @@ fi
 
 # If possible, add tab completion for many more commands
 [ -f /etc/bash_completion ] && source /etc/bash_completion
+source ~/.bash_completion.d/*.sh
+
 if $IS_MACOS; then
     # Force Python, then Homebrew binaries to take precedence on macOS default
     PYTHON_LOCAL_BIN="$(python -m site --user-base)/bin"
