@@ -13,6 +13,10 @@ _snakebite()
         cur="snakebite"
         prev="du"
     fi
+    if [[ ${cur} == "htxt" ]]; then
+        cur="snakebite"
+        prev="text"
+    fi
 
     if [[ ${prev} != "snakebite" ]]; then
         local IFS=$'\t\n'
@@ -37,3 +41,4 @@ _snakebite()
 complete -F _snakebite snakebite
 complete -F _snakebite hls
 complete -F _snakebite hdu
+complete -F _snakebite htxt
