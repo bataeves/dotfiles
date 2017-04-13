@@ -5,11 +5,11 @@ _snakebite()
     cur="${COMP_WORDS[COMP_CWORD]}"
     prev="${COMP_WORDS[COMP_CWORD-1]}"
 
-    if [ ${cur} == "hls" ]; then
+    if [[ ${cur} == "hls" ]]; then
         cur="snakebite"
         prev="ls"
     fi
-    if [ ${cur} == "hdu" ]; then
+    if [[ ${cur} == "hdu" ]]; then
         cur="snakebite"
         prev="du"
     fi
