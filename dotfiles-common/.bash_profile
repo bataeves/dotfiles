@@ -282,7 +282,7 @@ export PATH
 # pyspark
 export PYSPARK_SUBMIT_ARGS="pyspark-shell"
 if $IS_MACOS; then
-  export SPARK_HOME=/usr/local/Cellar/apache-spark/2.1.0/libexec/
+  export SPARK_HOME=/usr/local/Cellar/apache-spark/2.1.0/libexec
 else
   export SPARK_HOME=/usr/lib/spark
   export HADOOP_USER_NAME="$USER"
