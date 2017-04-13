@@ -35,3 +35,5 @@ _snakebite()
 
 }
 complete -F _snakebite snakebite
+complete -F _snakebite hls
+complete -F _snakebite hdu
