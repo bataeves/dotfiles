@@ -137,35 +137,13 @@ brew install homebrew/fuse/ext4fuse
 brew install homebrew/fuse/ntfs-3g
 
 
-# Install Atom and its plugins.
-brew cask install atom
-ATOM_PACKAGES="
-atom-beautify
-autocomplete-paths
-autocomplete-python
-color-picker
-docblockr
-file-icons
-hydrogen
-linter-flake8
-linter
-linter-ui-default
-busy-signal
-intentions
-minimap
-python-isort
-python-tools
-tag
-trailing-spaces
-language-gitignore
-language-awk
-git-plus
-"
-for PACKAGE in $ATOM_PACKAGES
-do
-   apm install "$PACKAGE"
-done
-
+brew cask install sublime-text
+mkdir -p "~/Library/Application Support/Sublime Text 3/Packages/User/"
+mkdir -p "~/Library/Application Support/Sublime Text 3/Installed Packages"
+mkdir -p ~/.local/bin/
+wget "https://packagecontrol.io/Package%20Control.sublime-package" -O "~/Library/Application Support/Sublime Text 3/Installed Packages/Package Control.sublime-package"
+cp "dotfiles-common/Package Control.sublime-settings" "~/Library/Application Support/Sublime Text 3/Packages/User/Package Control.sublime-settings"
+ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl ~/.local/bin/subl
 
 # Clean things up.
 brew linkapps

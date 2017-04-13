@@ -13,7 +13,7 @@
 # escape ^aa  # default
 escape ^pp  # suggested binding for emacs users
 
-termcapinfo xterm-255color|xterm-color|screen-256color ti@:te@
+termcapinfo xterm-256color|xterm-color|screen-256color ti@:te@
 term screen-256color
 shell -$SHELL
 setenv SSH_AUTH_SOCK "/tmp/ssh-agent-$USER"

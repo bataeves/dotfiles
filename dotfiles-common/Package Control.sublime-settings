@@ -1,0 +1,32 @@
+{
+    "bootstrapped": true,
+    "in_process_packages":
+    [
+    ],
+    "installed_packages":
+    [
+        "A File Icon",
+        "All Autocomplete",
+        "Apache Hive",
+        "ApplySyntax",
+        "AutoFileName",
+        "BracketHighlighter",
+        "Color Highlighter",
+        "Git",
+        "GitGutter",
+        "Gitignore",
+        "Indent XML",
+        "MarkdownEditing",
+        "Material Theme",
+        "Package Control",
+        "Pretty JSON",
+        "requirementstxt",
+        "Restructured Text (RST) Snippets",
+        "RestructuredText Improved",
+        "Scala Syntax",
+        "Side​Bar​Enhancements",
+        "SublimeCodeIntel",
+        "Sublime​REPL",
+        "TrailingSpaces"
+    ]
+}
