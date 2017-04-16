@@ -104,6 +104,7 @@ brew cask install java
 # brew cask install libreoffice
 brew cask install spectacle
 brew cask install telegram-desktop
+brew cask install slack
 brew cask install torbrowser
 brew cask install tunnelblick
 
@@ -138,11 +139,12 @@ brew install homebrew/fuse/ntfs-3g
 
 
 brew cask install sublime-text
-mkdir -p "~/Library/Application Support/Sublime Text 3/Packages/User/"
-mkdir -p "~/Library/Application Support/Sublime Text 3/Installed Packages"
+sublappsupport=~/Library/Application\ Support/Sublime\ Text\ 3
+mkdir -p $sublappsupport/Packages/User/
+mkdir -p $sublappsupport/Installed Packages
 mkdir -p ~/.local/bin/
-wget "https://packagecontrol.io/Package%20Control.sublime-package" -O "~/Library/Application Support/Sublime Text 3/Installed Packages/Package Control.sublime-package"
-cp "dotfiles-common/Package Control.sublime-settings" "~/Library/Application Support/Sublime Text 3/Packages/User/Package Control.sublime-settings"
+wget "https://packagecontrol.io/Package%20Control.sublime-package" -O $sublappsupport/Installed\ Packages/Package\ Control.sublime-package
+cp "dotfiles-common/Package Control.sublime-settings" $sublappsupport/Packages/User/Package\ Control.sublime-settings
 ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl ~/.local/bin/subl
 
 # Clean things up.
