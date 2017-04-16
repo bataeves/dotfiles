@@ -120,11 +120,16 @@ pygments
 setuptools
 virtualenv
 virtualenvwrapper
+jupyter
+jupyter_contrib_nbextensions
+jupyter_nbextensions_configurator
 "
 for p in $PYTHON_PACKAGES
 do
     pip2.7 install --user "$p"
 done
+
+jupyter contrib nbextension install --user
 
 # Patch terminal font for Vim's Airline plugin
 # See: https://powerline.readthedocs.org/en/latest/fontpatching.html
