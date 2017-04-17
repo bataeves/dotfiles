@@ -276,7 +276,7 @@ if $IS_MACOS; then
 fi
 
 # User specific environment and startup programs
-PATH=$PATH:$HOME/bin:$HOME/.local/bin
+PATH=$HOME/bin:$HOME/.local/bin:$PATH
 export PATH
 
 # pyspark
