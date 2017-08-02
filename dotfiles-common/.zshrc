@@ -51,7 +51,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git pip python yarn)
+plugins=(git pip python yarn zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -123,6 +123,9 @@ export HISTIGNORE="ls:ll:cd:cd -:pwd:exit:date:history"
 # # Append to the history file, don't overwrite it.
 # shopt -s histappend
 setopt APPEND_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_REDUCE_BLANKS
 
 # # Allow us to re-edit a failed history substitution.
 # shopt -s histreedit
@@ -236,7 +239,7 @@ fi
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
-    lsflags="--color --group-directories-first"
+    lsflags=("--color" "--group-directories-first")
 else # macOS `ls`
     lsflags="-G"
 fi

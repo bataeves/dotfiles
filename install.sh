@@ -100,6 +100,10 @@ mkdir -p ~/.vim_tmp/
 mkdir -p ~/.vim/colors/
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
+# Install ZSH plugins
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
 # Install all software first.
 if $IS_MACOS; then
     source ./scripts/macos-install.sh
@@ -146,7 +150,7 @@ else
     mkdir -p ~/.fonts/
     mv ./Source\ Code\ Pro.otf ~/.fonts/
     # Refresh font cache
-    fc-cache -f -v
+    fc-cache -vf
 fi
 
 # cp ~/.vim/dein/repos/github.com/dracula/vim/colors/dracula.vim ~/.vim/colors/
