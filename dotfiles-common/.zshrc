@@ -55,6 +55,7 @@ plugins=(git pip python yarn zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
+DISABLE_AUTO_TITLE="true"
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
