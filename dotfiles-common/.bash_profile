@@ -303,3 +303,5 @@ alias hatxt='hadoop fs -text'
 
 alias epyspark2='SPARK_HOME=$HOME/spark-2.1.0-bin-hadoop2.6/ PYTHONPATH="$SPARK_HOME/python/:$SPARK_HOME/python/lib/py4j-0.10.4-src.zip:."'
 alias epyspark2_cl='SPARK_HOME=/usr/lib/spark2/ PYTHONPATH="$SPARK_HOME/python/:$SPARK_HOME/python/lib/py4j-0.10.4-src.zip:."'
+
+source ~/.bash_profile.d/*.sh
