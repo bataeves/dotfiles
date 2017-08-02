@@ -6,6 +6,7 @@
     # Prevent macOS's revisiond daemon to mess up with our files.
     # See: https://www.git-tower.com/blog/make-git-rebase-safe-on-osx/
     trustctime = false
+    preloadindex = true
 [user]
     name = Батаев Евгений
     email = e.bataev@corp.mail.ru

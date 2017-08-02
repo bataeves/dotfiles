@@ -1,9 +1,90 @@
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+  export ZSH=/Users/e.bataev/.oh-my-zsh
+
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME="robbyrussell"
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion. Case
+# sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git pip python yarn)
+
+source $ZSH/oh-my-zsh.sh
+
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+
 # Prefer US English and use UTF-8
 export LANG="en_US"
 export LC_ALL="en_US.UTF-8"
 
 # Detect distribution
-if [ "$(uname -s)" == "Darwin" ]; then
+if [[ "$(uname -s)" == "Darwin" ]]; then
     IS_MACOS=true
 else
     IS_MACOS=false
@@ -16,6 +97,8 @@ if $IS_MACOS; then
 fi
 
 # If possible, add tab completion for many more commands
+autoload bashcompinit
+bashcompinit
 [ -f /etc/bash_completion ] && source /etc/bash_completion
 source ~/.bash_completion.d/*.sh
 
@@ -25,7 +108,7 @@ if $IS_MACOS; then
     GNU_CORE_UTILS_BIN="$(brew --prefix coreutils)/libexec/gnubin"
     export PATH="$PYTHON_LOCAL_BIN:$GNU_CORE_UTILS_BIN:/usr/local/bin:/usr/local/sbin:$PATH"
     [ -f "$(brew --prefix)/etc/bash_completion" ] && source "$(brew --prefix)/etc/bash_completion"
-    test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+    # test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 fi
 
 # Setting history length
@@ -36,45 +119,31 @@ export HISTFILESIZE=$HISTSIZE;
 # Make some commands not show up in history
 export HISTIGNORE="ls:ll:cd:cd -:pwd:exit:date:history"
 
-# Append to the history file, don't overwrite it.
-shopt -s histappend
-# Allow us to re-edit a failed history substitution.
-shopt -s histreedit
-# History expansions will be verified before execution.
-shopt -s histverify
+# # Append to the history file, don't overwrite it.
+# shopt -s histappend
+setopt APPEND_HISTORY
 
-# Case-insensitive globbing (used in pathname expansion).
-shopt -s nocaseglob
-
-# Autocorrect typos in path names when using `cd`.
-shopt -s cdspell
-
-# Check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-shopt -s checkwinsize
-
-# Enable some Bash 4 features when possible:
-# * `autocd`, e.g. `**/qux` will enter `./foo/bar/baz/qux`
-# * Recursive globbing, e.g. `echo **/*.txt`
-for option in autocd globstar; do
-    shopt -s "$option" 2> /dev/null;
-done;
+# # Allow us to re-edit a failed history substitution.
+# shopt -s histreedit
+# # History expansions will be verified before execution.
+# shopt -s histverify
 
 # After each command, append to the history file and reread it.
 # Source: https://unix.stackexchange.com/a/1292
-export GIT_PROMPT_SHOW_UNTRACKED_FILES=no
-export GIT_PROMPT_FETCH_REMOTE_STATUS=0
+# export GIT_PROMPT_SHOW_UNTRACKED_FILES=no
+# export GIT_PROMPT_FETCH_REMOTE_STATUS=0
 
-export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a;"
+# закоментил, так как жуткие тормоза
+# export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}; history -a;"
 
 # Set user & root prompt
-if $IS_MACOS; then
-    GIT_PROMPT_THEME="Solarized"
-else
-    GIT_PROMPT_THEME="Solarized_UserHost"
-fi
-source ~/.bash-git-prompt/gitprompt.sh
-export SUDO_PS1='\[\e[31m\]\u\[\e[37m\]:\[\e[33m\]\w\[\e[31m\]\$\[\033[00m\] '
+# if $IS_MACOS; then
+#     GIT_PROMPT_THEME="Solarized"
+# else
+#     GIT_PROMPT_THEME="Solarized_UserHost"
+# fi
+# source ~/.bash-git-prompt/gitprompt.sh
+# export SUDO_PS1='\[\e[31m\]\u\[\e[37m\]:\[\e[33m\]\w\[\e[31m\]\$\[\033[00m\] '
 
 # Make Neovim the default editor
 export EDITOR="vim"
@@ -222,10 +291,10 @@ export VIRTUALENVWRAPPER_VIRTUALENV_ARGS="--python=$(which python)"
 # source virtualenvwrapper.sh
 # source ~/.autoenv/activate.sh
 
-eval "$(pip2.7 completion --bash)"
+eval "$(pip2.7 completion --zsh)"
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
-[ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh
+# [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh
 
 # Extract most know archives with one command
 extract () {
@@ -263,7 +332,7 @@ if $IS_MACOS; then
 
     # Add tab completion for `defaults read|write NSGlobalDomain`
     # You could just use `-g` instead, but I like being explicit
-    complete -W "NSGlobalDomain" defaults
+    # complete -W "NSGlobalDomain" defaults
 
     # Lock the screen
     alias lock='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
@@ -303,3 +372,5 @@ alias hatxt='hadoop fs -text'
 
 alias epyspark2='SPARK_HOME=$HOME/spark-2.1.0-bin-hadoop2.6/ PYTHONPATH="$SPARK_HOME/python/:$SPARK_HOME/python/lib/py4j-0.10.4-src.zip:."'
 alias epyspark2_cl='SPARK_HOME=/usr/lib/spark2/ PYTHONPATH="$SPARK_HOME/python/:$SPARK_HOME/python/lib/py4j-0.10.4-src.zip:."'
+
+source ~/.bash_profile.d/*.sh

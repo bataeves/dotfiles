@@ -123,6 +123,7 @@ virtualenvwrapper
 jupyter
 jupyter_contrib_nbextensions
 jupyter_nbextensions_configurator
+ipycache
 "
 for p in $PYTHON_PACKAGES
 do

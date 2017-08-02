@@ -1,0 +1,35 @@
+{
+    "snippets" : [
+        {
+            "name" : "numpy+scipy+mpl",
+            "code" : [
+                "%matplotlib inline",
+                "import numpy as np",
+                "import pandas as pd",
+                "import scipy",
+                "import seaborn as sns",
+                "sns.set()",
+                "from matplotlib import pyplot as plt",
+                "plt.rcParams[\"figure.figsize\"] = (12, 9)"
+            ]
+        },
+        {
+            "name" : "telegram",
+            "code" : [
+                "%load_ext ipytelegram",
+                "%telegram_setup 332564768:AAHrmaIZ-17KhoKilM9NAC3B2X3ISan6IM4 181198550"
+            ]
+        },
+        {
+            "name" : "pyspark",
+            "code" : [
+                "from utils.spark import jupyter_spark_context, fields2schema",
+                "import pyspark.sql.functions as F",
+                "from pyspark.sql import HiveContext",
+                "jars = [\"/tmp/mining/lib/mining-common-fatjar.jar\"]",
+                "sc = jupyter_spark_context(\"DM-****\", num_executors=20, executor_memory=\"1g\", jars=jars)",
+                "sql = HiveContext(sc)"
+            ]
+        }
+    ]
+}
