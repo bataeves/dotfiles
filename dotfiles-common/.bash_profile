@@ -60,6 +60,10 @@ for option in autocd globstar; do
     shopt -s "$option" 2> /dev/null;
 done;
 
+# User specific environment and startup programs
+PATH=$HOME/bin:$HOME/.local/bin:$PATH
+export PATH
+
 # After each command, append to the history file and reread it.
 # Source: https://unix.stackexchange.com/a/1292
 export GIT_PROMPT_SHOW_UNTRACKED_FILES=no
@@ -277,10 +281,6 @@ if $IS_MACOS; then
     # fi
 
 fi
-
-# User specific environment and startup programs
-PATH=$HOME/bin:$HOME/.local/bin:$PATH
-export PATH
 
 # pyspark
 export PYSPARK_SUBMIT_ARGS="pyspark-shell"
