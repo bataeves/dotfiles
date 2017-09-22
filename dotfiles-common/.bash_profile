@@ -286,22 +286,22 @@ export PATH
 export PYSPARK_SUBMIT_ARGS="pyspark-shell"
 if $IS_MACOS; then
   export SPARK_HOME=/usr/local/Cellar/apache-spark/2.1.0/libexec
-else
-  export SPARK_HOME=/usr/lib/spark
-  export HADOOP_USER_NAME="$USER"
-  export PYSPARK_PYTHON=/usr/bin/python2.7
+# else
+#   export SPARK_HOME=/usr/lib/spark
+#   export HADOOP_USER_NAME="$USER"
+#   export PYSPARK_PYTHON=/usr/bin/python2.7
 fi
 
-export PYTHONPATH=$SPARK_HOME/python:$SPARK_HOME/python/build:$PYTHONPATH
-export PYTHONPATH=$SPARK_HOME/python/lib/py4j-0.9-src.zip:$PYTHONPATH
-export PYTHONPATH=$SPARK_HOME/python/lib/py4j-0.10.4-src.zip:$PYTHONPATH
+# export PYTHONPATH=$SPARK_HOME/python:$SPARK_HOME/python/build:$PYTHONPATH
+# export PYTHONPATH=$SPARK_HOME/python/lib/py4j-0.9-src.zip:$PYTHONPATH
+# export PYTHONPATH=$SPARK_HOME/python/lib/py4j-0.10.4-src.zip:$PYTHONPATH
 
-alias htxt='snakebite text'
-alias hls='snakebite ls -h'
-alias hdu='snakebite du -h'
-alias hatxt='hadoop fs -text'
+# alias htxt='snakebite text'
+# alias hls='snakebite ls -h'
+# alias hdu='snakebite du -h'
+# alias hatxt='hadoop fs -text'
 
-alias epyspark2='SPARK_HOME=$HOME/spark-2.1.0-bin-hadoop2.6/ PYTHONPATH="$SPARK_HOME/python/:$SPARK_HOME/python/lib/py4j-0.10.4-src.zip:."'
-alias epyspark2_cl='SPARK_HOME=/usr/lib/spark2/ PYTHONPATH="$SPARK_HOME/python/:$SPARK_HOME/python/lib/py4j-0.10.4-src.zip:."'
+# alias epyspark2='SPARK_HOME=$HOME/spark-2.1.0-bin-hadoop2.6/ PYTHONPATH="$SPARK_HOME/python/:$SPARK_HOME/python/lib/py4j-0.10.4-src.zip:."'
+# alias epyspark2_cl='SPARK_HOME=/usr/lib/spark2/ PYTHONPATH="$SPARK_HOME/python/:$SPARK_HOME/python/lib/py4j-0.10.4-src.zip:."'
 
-source ~/.bash_profile.d/*.sh
+for f in ~/.bash_profile.d/*.sh; do source $f; done
