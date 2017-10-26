@@ -285,16 +285,16 @@ fi
 # pyspark
 export PYSPARK_SUBMIT_ARGS="pyspark-shell"
 if $IS_MACOS; then
-  export SPARK_HOME=/usr/local/Cellar/apache-spark/2.1.0/libexec
+  export SPARK_HOME=/usr/local/Cellar/apache-spark/2.2.0/libexec
 # else
 #   export SPARK_HOME=/usr/lib/spark
 #   export HADOOP_USER_NAME="$USER"
 #   export PYSPARK_PYTHON=/usr/bin/python2.7
 fi
 
-# export PYTHONPATH=$SPARK_HOME/python:$SPARK_HOME/python/build:$PYTHONPATH
+export PYTHONPATH=$SPARK_HOME/python:$SPARK_HOME/python/build:$PYTHONPATH
 # export PYTHONPATH=$SPARK_HOME/python/lib/py4j-0.9-src.zip:$PYTHONPATH
-# export PYTHONPATH=$SPARK_HOME/python/lib/py4j-0.10.4-src.zip:$PYTHONPATH
+export PYTHONPATH=$SPARK_HOME/python/lib/py4j-0.10.4-src.zip:$PYTHONPATH
 
 # alias htxt='snakebite text'
 # alias hls='snakebite ls -h'
